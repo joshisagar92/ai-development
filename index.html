@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI Context Library - Complete documentation for AI-assisted development practices, skills, and domain expertise">
+    <title>AI Context Library - Complete Documentation</title>
+    <style>
+        :root {
+            --color-primary: #2563eb;
+            --color-primary-dark: #1d4ed8;
+            --color-secondary: #64748b;
+            --color-success: #22c55e;
+            --color-warning: #f59e0b;
+            --color-error: #ef4444;
+            --color-bg: #f8fafc;
+            --color-surface: #ffffff;
+            --color-text: #1e293b;
+            --color-text-muted: #64748b;
+            --color-border: #e2e8f0;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --radius: 8px;
+            --spacing-xs: 0.25rem;
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 1.5rem;
+            --spacing-xl: 2rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: white;
+            padding: var(--spacing-xl) var(--spacing-md);
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        header p {
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        nav {
+            background: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            padding: var(--spacing-md);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav a {
+            color: var(--color-primary);
+            text-decoration: none;
+            padding: var(--spacing-xs) var(--spacing-md);
+            border-radius: var(--radius);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        nav a:hover {
+            background: var(--color-bg);
+        }
+
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--spacing-xl) var(--spacing-md);
+        }
+
+        .section {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .section h2 {
+            color: var(--color-primary);
+            border-bottom: 2px solid var(--color-border);
+            padding-bottom: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+            font-size: 1.5rem;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .card {
+            background: var(--color-surface);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-md);
+            padding: var(--spacing-lg);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card h3 {
+            color: var(--color-text);
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: 1.1rem;
+        }
+
+        .card h3 .icon {
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: var(--color-text-muted);
+            margin-bottom: var(--spacing-md);
+            font-size: 0.9rem;
+        }
+
+        .card a {
+            display: inline-block;
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+        }
+
+        .card .topics {
+            margin-top: var(--spacing-sm);
+            font-size: 0.85rem;
+            color: var(--color-secondary);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .badge-core { background: #dbeafe; color: #1d4ed8; }
+        .badge-tech { background: #dcfce7; color: #166534; }
+        .badge-api { background: #fef3c7; color: #92400e; }
+        .badge-guide { background: #f3e8ff; color: #7c3aed; }
+        .badge-setup { background: #fce7f3; color: #be185d; }
+        .badge-security { background: #fee2e2; color: #dc2626; }
+        .badge-testing { background: #cffafe; color: #0891b2; }
+
+        .file-list {
+            list-style: none;
+            margin-top: var(--spacing-sm);
+        }
+
+        .file-list li {
+            padding: var(--spacing-xs) 0;
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+
+        .file-list code {
+            background: var(--color-bg);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+        }
+
+        .experts-table, .full-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: var(--spacing-md);
+            font-size: 0.9rem;
+        }
+
+        .experts-table th,
+        .experts-table td,
+        .full-table th,
+        .full-table td {
+            padding: var(--spacing-sm) var(--spacing-md);
+            text-align: left;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .experts-table th,
+        .full-table th {
+            background: var(--color-bg);
+            font-weight: 600;
+        }
+
+        .full-table tr:hover {
+            background: var(--color-bg);
+        }
+
+        .quick-start {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            border-radius: var(--radius);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .quick-start h2 {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.2);
+        }
+
+        .quick-start code {
+            background: rgba(255,255,255,0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+        }
+
+        .quick-start pre {
+            background: rgba(0,0,0,0.3);
+            padding: var(--spacing-md);
+            border-radius: var(--radius);
+            overflow-x: auto;
+            margin-top: var(--spacing-md);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .stat {
+            background: rgba(255,255,255,0.1);
+            padding: var(--spacing-md);
+            border-radius: var(--radius);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .toc {
+            background: var(--color-surface);
+            border-radius: var(--radius);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+        }
+
+        .toc h2 {
+            margin-bottom: var(--spacing-md);
+            font-size: 1.2rem;
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .toc-section h4 {
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-sm);
+            font-size: 0.9rem;
+        }
+
+        .toc-section ul {
+            list-style: none;
+        }
+
+        .toc-section li {
+            padding: 2px 0;
+        }
+
+        .toc-section a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .toc-section a:hover {
+            color: var(--color-primary);
+        }
+
+        footer {
+            text-align: center;
+            padding: var(--spacing-xl) var(--spacing-md);
+            color: var(--color-text-muted);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .collapsible {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .collapsible::after {
+            content: ' +';
+            font-weight: bold;
+        }
+
+        .collapsible.active::after {
+            content: ' -';
+        }
+
+        .content-details {
+            display: none;
+            padding: var(--spacing-md);
+            background: var(--color-bg);
+            border-radius: var(--radius);
+            margin-top: var(--spacing-sm);
+        }
+
+        .content-details.show {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.75rem; }
+            .card-grid { grid-template-columns: 1fr; }
+            nav ul { flex-direction: column; align-items: center; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>AI Context Library</h1>
+        <p>Complete documentation for AI-assisted development: practices, skills, domain expertise, and technology rulebooks for Claude Code and OpenAI Codex</p>
+        <div class="stats-grid">
+            <div class="stat">
+                <div class="stat-number">54</div>
+                <div class="stat-label">Markdown Files</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">35+</div>
+                <div class="stat-label">Domain Experts</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">11</div>
+                <div class="stat-label">Technology Skills</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">5</div>
+                <div class="stat-label">API Practice Skills</div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#quick-start">Quick Start</a></li>
+            <li><a href="#guides">Guides</a></li>
+            <li><a href="#rulebooks">Rulebooks</a></li>
+            <li><a href="#core-skills">Core Skills</a></li>
+            <li><a href="#tech-skills">Technology Skills</a></li>
+            <li><a href="#api-skills">API Skills</a></li>
+            <li><a href="#setup">Setup</a></li>
+            <li><a href="#experts">Domain Experts</a></li>
+            <li><a href="#all-files">All Files</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Quick Start -->
+        <section id="quick-start" class="quick-start">
+            <h2>Quick Start</h2>
+            <p>Load the master skill to get started with any coding task:</p>
+            <pre><code># For OpenAI Codex / ChatGPT
+@coding/skills/codex/MASTER-SKILL.md
+
+# For Claude Code
+Read @coding/skills/claude/MASTER-SKILL.md and apply those practices.</code></pre>
+            <p style="margin-top: var(--spacing-md);">The MASTER-SKILL includes:</p>
+            <ul style="margin-left: var(--spacing-lg); margin-top: var(--spacing-sm);">
+                <li>Non-technical mode for plain language explanations</li>
+                <li>Development phase skill loading (Planning, Implementation, Security, Testing, Deployment)</li>
+                <li>Output format requirements with decision documentation</li>
+                <li>Security, testing, and code quality checklists</li>
+            </ul>
+        </section>
+
+        <!-- Table of Contents -->
+        <section class="toc">
+            <h2>Contents Overview</h2>
+            <div class="toc-grid">
+                <div class="toc-section">
+                    <h4>Guides & References</h4>
+                    <ul>
+                        <li><a href="#guides">AI-Assisted Development Guide</a></li>
+                        <li><a href="#guides">Domain Experts Reference</a></li>
+                        <li><a href="#guides">Project Requirements Questionnaire</a></li>
+                    </ul>
+                </div>
+                <div class="toc-section">
+                    <h4>Rulebooks</h4>
+                    <ul>
+                        <li><a href="#rulebooks">Technology Rulebook</a></li>
+                        <li><a href="#rulebooks">API Practices Rulebook</a></li>
+                    </ul>
+                </div>
+                <div class="toc-section">
+                    <h4>Core Skills</h4>
+                    <ul>
+                        <li><a href="#core-skills">Programming (TDD)</a></li>
+                        <li><a href="#core-skills">Security (OWASP)</a></li>
+                        <li><a href="#core-skills">Testing</a></li>
+                        <li><a href="#core-skills">Database</a></li>
+                        <li><a href="#core-skills">Integration</a></li>
+                        <li><a href="#core-skills">Design Patterns</a></li>
+                    </ul>
+                </div>
+                <div class="toc-section">
+                    <h4>Technology Skills</h4>
+                    <ul>
+                        <li><a href="#tech-skills">Java/Spring</a></li>
+                        <li><a href="#tech-skills">Python/FastAPI</a></li>
+                        <li><a href="#tech-skills">Angular/JavaScript</a></li>
+                        <li><a href="#tech-skills">Docker & Kubernetes</a></li>
+                        <li><a href="#tech-skills">Observability</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Guides & References -->
+        <section id="guides" class="section">
+            <h2>Guides & References</h2>
+            <div class="card-grid">
+                <article class="card">
+                    <h3><span class="icon">&#128218;</span> AI-Assisted Development Guide</h3>
+                    <span class="badge badge-guide">Workflow Guide</span>
+                    <p>Complete workflow for AI-assisted development from idea to production. Covers four phases: Brainstorming, Planning, Implementation, and Code Review.</p>
+                    <div class="topics"><strong>Key Topics:</strong> Idea exploration, requirements gathering, implementation strategy, review checklists</div>
+                    <a href="AI-Assisted-Development-Guide.md">View Guide &rarr;</a>
+                </article>
+
+                <article class="card">
+                    <h3><span class="icon">&#128101;</span> Domain Experts Reference</h3>
+                    <span class="badge badge-guide">Reference</span>
+                    <p>35+ domain experts organized by technology area. Know whose best practices you're following: Spring, Kubernetes, TDD, Security, Observability, and more.</p>
+                    <div class="topics"><strong>Experts Include:</strong> Kent Beck, Martin Fowler, Josh Long, Kelsey Hightower, OWASP Foundation</div>
+                    <a href="domain-experts-reference.md">View Experts &rarr;</a>
+                </article>
+
+                <article class="card">
+                    <h3><span class="icon">&#128221;</span> Project Requirements Questionnaire</h3>
+                    <span class="badge badge-guide">Discovery</span>
+                    <p>Comprehensive discovery questions for new projects covering API integration, data retention, capacity planning, security requirements, and monitoring needs.</p>
+                    <div class="topics"><strong>Categories:</strong> Business context, technical requirements, NFRs, security, compliance</div>
+                    <a href="project-requirements-questionnaire.md">View Questions &rarr;</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Rulebooks -->
+        <section id="rulebooks" class="section">
+            <h2>Technology Rulebooks</h2>
+            <div class="card-grid">
+                <article class="card">
+                    <h3><span class="icon">&#128736;</span> Technology Rulebook</h3>
+                    <span class="badge badge-tech">Comprehensive</span>
+                    <p>Best practices for Java, Spring Boot, JDBC, Angular, Python, FastAPI, Docker, Kubernetes, Elasticsearch, Splunk, Datadog, and more.</p>
+                    <div class="topics"><strong>Coverage:</strong> Backend, Frontend, Infrastructure, Observability, Testing frameworks</div>
+                    <a href="technology-rulebook.md">View Rulebook &rarr;</a>
+                </article>
+
+                <article class="card">
+                    <h3><span class="icon">&#128279;</span> API Practices Rulebook</h3>
+                    <span class="badge badge-api">API Focus</span>
+                    <p>API documentation (OpenAPI 3.x), structured logging, monitoring (Four Golden Signals), security (OWASP API Top 10), and Postman/Newman testing.</p>
+                    <div class="topics"><strong>Standards:</strong> OpenAPI, 12-Factor, Google SRE, OWASP API Security</div>
+                    <a href="api-practices-rulebook.md">View Rulebook &rarr;</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Core Skills -->
+        <section id="core-skills" class="section">
+            <h2>Core Development Skills</h2>
+            <p style="margin-bottom: var(--spacing-lg); color: var(--color-text-muted);">
+                Fundamental skills applicable to all coding tasks. Load these for any development work.
+            </p>
+            <div class="card-grid">
+                <article class="card">
+                    <h3><span class="icon">&#127919;</span> MASTER-SKILL</h3>
+                    <span class="badge badge-core">Meta-Skill</span>
+                    <p>Meta-skill orchestrating all development practices. Includes output format rules, development phase skill loading, checklists, and non-technical communication mode.</p>
+                    <div class="topics"><strong>Features:</strong> Phase-based skill loading, security checklist, test quality checklist, code smell reference</div>
+                    <a href="coding/skills/codex/MASTER-SKILL.md">Codex Version</a> |
+                    <a href="coding/skills/claude/MASTER-SKILL.md">Claude Version</a>
+                </article>
+
+                <article class="card">
+                    <h3><span class="icon">&#128187;</span> Programming Practices</h3>
+                    <span class="badge badge-core">TDD & Code Quality</span>
+                    <p>Test-Driven Development workflow (Red-Green-Refactor), code quality checklist, refactoring triggers, and YAGNI principles.</p>
+                    <div class="topics"><strong>Key Rules:</strong> Write failing test first, methods &lt;15 lines, max 3 parameters, extract duplicated code</div>
+                    <a href="coding/skills/codex/programming/SKILL.md">Codex</a> |
+                    <a href="coding/skills/claude/programming/SKILL.md">Claude</a>
+                </article>
+
+                <article class="card">
+                    <h3><span class="icon">&#128274;</span> Security Practices</h3>
+                    <span class="badge badge-security">OWASP Standards</span>
+                    <p>Security implementation based on OWASP. SQL injection prevention, XSS encoding, access control verification, and password storage.</p>
+                    <div class="topics"><strong>Key Rules:</strong> Parameterized queries, output encoding, object ownership, bcrypt/Argon2 hashing</div>
+                    <a href="coding/skills/codex/security/SKILL.md">Codex</a> |
+                    <a href="coding/skills/claude/security/SKILL.md">Claude</a>
+                </article>
+
+                <article class="card">
+                    <h3><span class="icon">&#128300;</span> Testing Practices</h3>
+                    <span class="badge badge-testing">Test Patterns</span>
+                    <p>Test pyramid, AAA structure (Arrange-Act-Assert), test doubles (stubs, mocks, fakes), and test data builders.</p>
+                    <div class="topics"><strong>Key Rules:</strong> Tests &lt;100ms, no external dependencies, one assertion per test, deterministic</div>
+                    <a href="coding/skills/codex/testing/SKILL.md">Codex</a> |
+                    <a href="coding/skills/claude/testing/SKILL.md">Claude</a>
+                </article>
+
+                <article class="card">
+                    <h3><span class="icon">&#128451;</span> Database Practices</h3>
+                    <span class="badge badge-core">SQL & Migrations</span>
+                    <p>SQL best practices, migration patterns, indexing strategy, transaction patterns, and connection pool configuration.</p>
+                    <div class="topics"><strong>Key Rules:</strong> Version all schemas, parameterized queries, index WHERE/JOIN columns, use transactions</div>
+                    <a href="coding/skills/codex/db/SKILL.md">Codex</a> |
+                    <a href="coding/skills/claude/db/SKILL.md">Claude</a>
+                </article>
+
+                <article class="card">
+                    <h3><span class="icon">&#128279;</span> Integration Practices</h3>
+                    <span class="badge badge-api">APIs & Services</span>
+                    <p>API design (Richardson Maturity Model), RESTful patterns, circuit breaker, retry with backoff, correlation IDs, and versioning.</p>
+                    <div class="topics"><strong>Key Patterns:</strong> Tolerant Reader, Circuit Breaker, Idempotent Receiver, API versioning</div>
+                    <a href="coding/skills/codex/integration/SKILL.md">Codex</a> |
+                    <a href="coding/skills/claude/integration/SKILL.md">Claude</a>
+                </article>
+
+                <article class="card">
+                    <h3><span class="icon">&#128736;</span> Design Practices</h3>
+                    <span class="badge badge-core">SOLID & Patterns</span>
+                    <p>SOLID principles, Tell Don't Ask, Law of Demeter, Four Rules of Simple Design, and common patterns (Repository, Factory, Strategy).</p>
+                    <div class="topics"><strong>Anti-Patterns:</strong> Anemic Domain Model, God Class, Premature Abstraction, Speculative Generality</div>
+                    <a href="coding/skills/codex/code/SKILL.md">Codex</a> |
+                    <a href="coding/skills/claude/code/SKILL.md">Claude</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Technology Skills -->
+        <section id="tech-skills" class="section">
+            <h2>Technology Skills</h2>
+            <p style="margin-bottom: var(--spacing-lg); color: var(--color-text-muted);">
+                Technology-specific skills loaded based on your project stack. Trigger files shown for automatic loading.
+            </p>
+            <div class="card-grid">
+                <article class="card">
+                    <h3><span class="icon">&#9749;</span> Java & Spring Boot</h3>
+                    <span class="badge badge-tech">Backend</span>
+                    <p>Spring Boot best practices: dependency injection, profiles, Actuator endpoints, configuration properties, and constructor injection.</p>
+                    <div class="topics"><strong>Triggers:</strong> *.java, pom.xml, build.gradle</div>
+                    <a href="coding/skills/codex/technologies/java-spring.md">Codex</a> |
+                    <a href="coding/skills/claude/technologies/java-spring.md">Claude</a>
+                </article>
+
+                <article class="card">
+                    <h3><span class="icon">&#128451;</span> JDBC & Connection Pooling</h3>
+                    <span class="badge badge-tech">Database</span>
+                    <p>HikariCP configuration, PreparedStatement usage, connection pool sizing, leak detection, and JDBC best practices.</p>
+                    <div class="topics"><strong>Triggers:</strong> *.java + database configuration</div>
+                    <a href="coding/skills/codex/technologies/jdbc-pooling.md">Codex</a> |
+                    <a href="coding/skills/claude/technologies/jdbc-pooling.md">Claude</a>
+                </article>
+
+                <article class="card">
+                    <h3><span class="icon">&#128013;</span> Python & FastAPI</h3>
+                    <span class="badge badge-tech">Backend</span>
+                    <p>FastAPI patterns: Pydantic models, Depends() for DI, async/await, path operations, and response models.</p>
+                    <div class="topics"><strong>Triggers:</strong> *.py, requirements.txt, pyproject.toml</div>
+                    <a href="coding/skills/codex/technologies/python-fastapi.md">Codex</a> |
+                    <a href="coding/skills/claude/technologies/python-fastapi.md">Claude</a>
+                </article>
+
+                <article class="card">
+                    <h3><span class="icon">&#128736;</span> Angular & JavaScript</h3>
+                    <span class="badge badge-tech">Frontend</span>
+                    <p>Angular 2+ and AngularJS patterns: components, services, RxJS observables, OnPush change detection, and module organization.</p>
+                    <div class="topics"><strong>Triggers:</strong> *.ts, angular.json, *.component.ts</div>
+                    <a href="coding/skills/codex/technologies/javascript-angular.md">Codex</a> |
+                    <a href="coding/skills/claude/technologies/javascript-angular.md">Claude</a>
+                </article>
+
+                <article class="card">
+                    <h3><span class="icon">&#127760;</span> HTML & CSS</h3>
+                    <span class="badge badge-tech">Frontend</span>
+                    <p>Semantic HTML5, WCAG 2.1 accessibility, CSS custom properties, responsive design, and accessibility patterns.</p>
+                    <div class="topics"><strong>Triggers:</strong> *.html, *.css, *.scss</div>
+                    <a href="coding/skills/codex/technologies/html-css.md">Codex</a> |
+                    <a href="coding/skills/claude/technologies/html-css.md">Claude</a>
+                </article>
+
+                <article class="card">
+                    <h3><span class="icon">&#128230;</span> Docker</h3>
+                    <span class="badge badge-tech">Containers</span>
+                    <p>Multi-stage builds, non-root user, .dockerignore, layer optimization, health checks, and security scanning.</p>
+                    <div class="topics"><strong>Triggers:</strong> Dockerfile, docker-compose.yml</div>
+                    <a href="coding/skills/codex/technologies/docker.md">Codex</a> |
+                    <a href="coding/skills/claude/technologies/docker.md">Claude</a>
+                </article>
+
+                <article class="card">
+                    <h3><span class="icon">&#9784;</span> Kubernetes & AKS</h3>
+                    <span class="badge badge-tech">Infrastructure</span>
+                    <p>Probes (liveness, readiness, startup), HPA, PDB, ConfigMaps, Secrets, resource limits, and Azure AKS specifics.</p>
+                    <div class="topics"><strong>Triggers:</strong> *.yaml (k8s manifests), deployment.yaml</div>
+                    <a href="coding/skills/codex/technologies/kubernetes-aks.md">Codex</a> |
+                    <a href="coding/skills/claude/technologies/kubernetes-aks.md">Claude</a>
+                </article>
+
+                <article class="card">
+                    <h3><span class="icon">&#128200;</span> Observability</h3>
+                    <span class="badge badge-tech">Monitoring</span>
+                    <p>Elasticsearch, Splunk, Datadog best practices: structured logging, metrics, dashboards, and alerting patterns.</p>
+                    <div class="topics"><strong>Platforms:</strong> ELK Stack, Splunk, Datadog, Prometheus</div>
+                    <a href="coding/skills/codex/technologies/observability.md">Codex</a> |
+                    <a href="coding/skills/claude/technologies/observability.md">Claude</a>
+                </article>
+
+                <article class="card">
+                    <h3><span class="icon">&#128230;</span> Testcontainers</h3>
+                    <span class="badge badge-testing">Integration Testing</span>
+                    <p>Container-based integration testing: dynamic ports, @DynamicPropertySource, wait strategies, and reusable containers.</p>
+                    <div class="topics"><strong>Use Cases:</strong> Database tests, Kafka tests, Redis tests</div>
+                    <a href="coding/skills/codex/technologies/testcontainers.md">Codex</a> |
+                    <a href="coding/skills/claude/technologies/testcontainers.md">Claude</a>
+                </article>
+
+                <article class="card">
+                    <h3><span class="icon">&#128260;</span> Mockito</h3>
+                    <span class="badge badge-testing">Unit Testing</span>
+                    <p>Mocking best practices: mock roles not objects, BDDMockito, argument captors, and verification patterns.</p>
+                    <div class="topics"><strong>Patterns:</strong> given/when/then, verify interactions, strict stubs</div>
+                    <a href="coding/skills/codex/technologies/mockito.md">Codex</a> |
+                    <a href="coding/skills/claude/technologies/mockito.md">Claude</a>
+                </article>
+
+                <article class="card">
+                    <h3><span class="icon">&#128196;</span> Jinja2</h3>
+                    <span class="badge badge-tech">Templating</span>
+                    <p>Jinja2 templating: autoescaping, template inheritance, macros, filters, and security considerations.</p>
+                    <div class="topics"><strong>Use Cases:</strong> HTML templates, email templates, config generation</div>
+                    <a href="coding/skills/codex/technologies/jinja2.md">Codex</a> |
+                    <a href="coding/skills/claude/technologies/jinja2.md">Claude</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- API Practice Skills -->
+        <section id="api-skills" class="section">
+            <h2>API Practice Skills</h2>
+            <p style="margin-bottom: var(--spacing-lg); color: var(--color-text-muted);">
+                API-specific skills for documentation, logging, monitoring, security, and testing.
+            </p>
+            <div class="card-grid">
+                <article class="card">
+                    <h3><span class="icon">&#128196;</span> API Documentation</h3>
+                    <span class="badge badge-api">OpenAPI</span>
+                    <p>OpenAPI 3.x specification, design-first approach, example requests/responses, and documentation best practices.</p>
+                    <div class="topics"><strong>Standards:</strong> OpenAPI 3.0+, Swagger UI, ReDoc</div>
+                    <a href="coding/skills/codex/api-practices/api-documentation.md">Codex</a> |
+                    <a href="coding/skills/claude/api-practices/api-documentation.md">Claude</a>
+                </article>
+
+                <article class="card">
+                    <h3><span class="icon">&#128203;</span> API Logging</h3>
+                    <span class="badge badge-api">Structured Logs</span>
+                    <p>Structured JSON logging, correlation IDs, 12-Factor app logging, log levels, and sensitive data handling.</p>
+                    <div class="topics"><strong>Principles:</strong> 12-Factor, correlation tracking, no sensitive data in logs</div>
+                    <a href="coding/skills/codex/api-practices/api-logging.md">Codex</a> |
+                    <a href="coding/skills/claude/api-practices/api-logging.md">Claude</a>
+                </article>
+
+                <article class="card">
+                    <h3><span class="icon">&#128200;</span> API Monitoring</h3>
+                    <span class="badge badge-api">SRE Practices</span>
+                    <p>Four Golden Signals (latency, traffic, errors, saturation), SLOs, distributed tracing, and health checks.</p>
+                    <div class="topics"><strong>Metrics:</strong> RED method, USE method, SLIs/SLOs/SLAs</div>
+                    <a href="coding/skills/codex/api-practices/api-monitoring.md">Codex</a> |
+                    <a href="coding/skills/claude/api-practices/api-monitoring.md">Claude</a>
+                </article>
+
+                <article class="card">
+                    <h3><span class="icon">&#128274;</span> API Security</h3>
+                    <span class="badge badge-security">OWASP API Top 10</span>
+                    <p>BOLA prevention, mass assignment protection, rate limiting, SSRF prevention, and API authentication patterns.</p>
+                    <div class="topics"><strong>Standards:</strong> OWASP API Top 10, JWT best practices, OAuth 2.0</div>
+                    <a href="coding/skills/codex/api-practices/api-security.md">Codex</a> |
+                    <a href="coding/skills/claude/api-practices/api-security.md">Claude</a>
+                </article>
+
+                <article class="card">
+                    <h3><span class="icon">&#128230;</span> Postman & Newman</h3>
+                    <span class="badge badge-testing">API Testing</span>
+                    <p>Postman collections, environment variables, pre-request scripts, test scripts, and Newman CI integration.</p>
+                    <div class="topics"><strong>Use Cases:</strong> API testing, contract testing, CI/CD integration</div>
+                    <a href="coding/skills/codex/api-practices/postman-newman.md">Codex</a> |
+                    <a href="coding/skills/claude/api-practices/postman-newman.md">Claude</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Setup Instructions -->
+        <section id="setup" class="section">
+            <h2>Setup Instructions</h2>
+            <div class="card-grid">
+                <article class="card">
+                    <h3><span class="icon">&#128736;</span> Codex CLI Setup</h3>
+                    <span class="badge badge-setup">Installation</span>
+                    <p>Instructions for adding skills to OpenAI Codex CLI and ChatGPT: custom instructions, API system prompts, and GitHub Copilot configuration.</p>
+                    <div class="topics"><strong>Methods:</strong> Custom Instructions, System Prompt, .github/copilot-instructions.md</div>
+                    <a href="coding/skills/CODEX-CLI-INSTRUCTIONS.md">View Instructions &rarr;</a>
+                </article>
+
+                <article class="card">
+                    <h3><span class="icon">&#129302;</span> Claude Code Setup</h3>
+                    <span class="badge badge-setup">Installation</span>
+                    <p>Instructions for using skills with Claude Code: CLAUDE.md configuration, in-conversation loading, and project-level setup.</p>
+                    <div class="topics"><strong>Methods:</strong> CLAUDE.md, .claude/skills/, global config, @-references</div>
+                    <a href="coding/skills/CLAUDE-CODE-INSTRUCTIONS.md">View Instructions &rarr;</a>
+                </article>
+
+                <article class="card">
+                    <h3><span class="icon">&#128218;</span> Skills Installation Guide</h3>
+                    <span class="badge badge-setup">Comprehensive</span>
+                    <p>Complete guide covering all platforms: Claude Code, ChatGPT, OpenAI API, and GitHub Copilot with troubleshooting tips.</p>
+                    <div class="topics"><strong>Includes:</strong> Verification steps, customization, troubleshooting</div>
+                    <a href="coding/SKILLS-GUIDE.md">View Guide &rarr;</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Domain Experts -->
+        <section id="experts" class="section">
+            <h2>Domain Experts Reference</h2>
+            <div class="card">
+                <p style="margin-bottom: var(--spacing-md);">The skills and practices in this library are based on the work of 35+ domain experts:</p>
+                <table class="experts-table">
+                    <thead>
+                        <tr>
+                            <th>Domain</th>
+                            <th>Key Experts</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>TDD & XP</strong></td>
+                            <td>Kent Beck, Michael Feathers, Robert C. Martin ("Uncle Bob")</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Refactoring & Patterns</strong></td>
+                            <td>Martin Fowler, Joshua Kerievsky, Eric Evans</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Spring Framework</strong></td>
+                            <td>Josh Long, Juergen Hoeller, Phil Webb, Stephane Nicoll</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kubernetes</strong></td>
+                            <td>Kelsey Hightower, Brendan Burns, Joe Beda, Nigel Poulton</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Testing Frameworks</strong></td>
+                            <td>Richard North (Testcontainers), Szczepan Faber (Mockito)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Security</strong></td>
+                            <td>OWASP Foundation, Troy Hunt, Darrel Miller (OpenAPI)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Observability</strong></td>
+                            <td>Google SRE Team, David Carasso (Splunk), Alexis Lê-Quôc (Datadog)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>API Design</strong></td>
+                            <td>Leonard Richardson, Roy Fielding, Sam Newman</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top: var(--spacing-md);"><a href="domain-experts-reference.md">View complete expert list with contributions &rarr;</a></p>
+            </div>
+        </section>
+
+        <!-- Complete File Index -->
+        <section id="all-files" class="section">
+            <h2>Complete File Index</h2>
+            <div class="card">
+                <table class="full-table">
+                    <thead>
+                        <tr>
+                            <th>File</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="3" style="background: var(--color-primary); color: white; font-weight: bold;">Root Documentation</td></tr>
+                        <tr>
+                            <td><code>AI-Assisted-Development-Guide.md</code></td>
+                            <td><span class="badge badge-guide">Guide</span></td>
+                            <td>Workflow for AI-assisted development (brainstorming to review)</td>
+                        </tr>
+                        <tr>
+                            <td><code>domain-experts-reference.md</code></td>
+                            <td><span class="badge badge-guide">Reference</span></td>
+                            <td>35+ domain experts by technology area</td>
+                        </tr>
+                        <tr>
+                            <td><code>project-requirements-questionnaire.md</code></td>
+                            <td><span class="badge badge-guide">Discovery</span></td>
+                            <td>Comprehensive project discovery questions</td>
+                        </tr>
+                        <tr>
+                            <td><code>technology-rulebook.md</code></td>
+                            <td><span class="badge badge-tech">Rulebook</span></td>
+                            <td>Technology best practices (Java, Python, Docker, K8s, etc.)</td>
+                        </tr>
+                        <tr>
+                            <td><code>api-practices-rulebook.md</code></td>
+                            <td><span class="badge badge-api">Rulebook</span></td>
+                            <td>API documentation, logging, monitoring, security</td>
+                        </tr>
+
+                        <tr><td colspan="3" style="background: var(--color-primary); color: white; font-weight: bold;">Core Skills (coding/skills/codex/ and claude/)</td></tr>
+                        <tr>
+                            <td><code>MASTER-SKILL.md</code></td>
+                            <td><span class="badge badge-core">Meta</span></td>
+                            <td>Meta-skill with output rules, phase loading, checklists</td>
+                        </tr>
+                        <tr>
+                            <td><code>programming/SKILL.md</code></td>
+                            <td><span class="badge badge-core">Core</span></td>
+                            <td>TDD workflow, code quality checklist, refactoring triggers</td>
+                        </tr>
+                        <tr>
+                            <td><code>security/SKILL.md</code></td>
+                            <td><span class="badge badge-security">Security</span></td>
+                            <td>SQL injection, XSS, access control, password storage</td>
+                        </tr>
+                        <tr>
+                            <td><code>testing/SKILL.md</code></td>
+                            <td><span class="badge badge-testing">Testing</span></td>
+                            <td>Test pyramid, AAA structure, test doubles</td>
+                        </tr>
+                        <tr>
+                            <td><code>db/SKILL.md</code></td>
+                            <td><span class="badge badge-core">Database</span></td>
+                            <td>Migrations, indexing, transactions, connection pools</td>
+                        </tr>
+                        <tr>
+                            <td><code>integration/SKILL.md</code></td>
+                            <td><span class="badge badge-api">APIs</span></td>
+                            <td>REST design, circuit breaker, correlation IDs</td>
+                        </tr>
+                        <tr>
+                            <td><code>code/SKILL.md</code></td>
+                            <td><span class="badge badge-core">Design</span></td>
+                            <td>SOLID principles, patterns, anti-patterns</td>
+                        </tr>
+
+                        <tr><td colspan="3" style="background: var(--color-primary); color: white; font-weight: bold;">Technology Skills (coding/skills/*/technologies/)</td></tr>
+                        <tr>
+                            <td><code>java-spring.md</code></td>
+                            <td><span class="badge badge-tech">Backend</span></td>
+                            <td>Spring Boot, DI, profiles, Actuator</td>
+                        </tr>
+                        <tr>
+                            <td><code>jdbc-pooling.md</code></td>
+                            <td><span class="badge badge-tech">Database</span></td>
+                            <td>HikariCP, PreparedStatements, pool sizing</td>
+                        </tr>
+                        <tr>
+                            <td><code>python-fastapi.md</code></td>
+                            <td><span class="badge badge-tech">Backend</span></td>
+                            <td>Pydantic, Depends(), async/await</td>
+                        </tr>
+                        <tr>
+                            <td><code>javascript-angular.md</code></td>
+                            <td><span class="badge badge-tech">Frontend</span></td>
+                            <td>Angular 2+, AngularJS, RxJS, components</td>
+                        </tr>
+                        <tr>
+                            <td><code>html-css.md</code></td>
+                            <td><span class="badge badge-tech">Frontend</span></td>
+                            <td>Semantic HTML5, WCAG accessibility, CSS properties</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker.md</code></td>
+                            <td><span class="badge badge-tech">Containers</span></td>
+                            <td>Multi-stage builds, non-root user, layer optimization</td>
+                        </tr>
+                        <tr>
+                            <td><code>kubernetes-aks.md</code></td>
+                            <td><span class="badge badge-tech">Infrastructure</span></td>
+                            <td>Probes, HPA, PDB, ConfigMaps, Secrets</td>
+                        </tr>
+                        <tr>
+                            <td><code>observability.md</code></td>
+                            <td><span class="badge badge-tech">Monitoring</span></td>
+                            <td>Elasticsearch, Splunk, Datadog</td>
+                        </tr>
+                        <tr>
+                            <td><code>testcontainers.md</code></td>
+                            <td><span class="badge badge-testing">Testing</span></td>
+                            <td>Container-based integration testing</td>
+                        </tr>
+                        <tr>
+                            <td><code>mockito.md</code></td>
+                            <td><span class="badge badge-testing">Testing</span></td>
+                            <td>Mocking best practices, BDDMockito</td>
+                        </tr>
+                        <tr>
+                            <td><code>jinja2.md</code></td>
+                            <td><span class="badge badge-tech">Templating</span></td>
+                            <td>Autoescaping, inheritance, macros</td>
+                        </tr>
+
+                        <tr><td colspan="3" style="background: var(--color-primary); color: white; font-weight: bold;">API Practice Skills (coding/skills/*/api-practices/)</td></tr>
+                        <tr>
+                            <td><code>api-documentation.md</code></td>
+                            <td><span class="badge badge-api">Docs</span></td>
+                            <td>OpenAPI 3.x, design-first approach</td>
+                        </tr>
+                        <tr>
+                            <td><code>api-logging.md</code></td>
+                            <td><span class="badge badge-api">Logging</span></td>
+                            <td>Structured JSON, correlation IDs, 12-Factor</td>
+                        </tr>
+                        <tr>
+                            <td><code>api-monitoring.md</code></td>
+                            <td><span class="badge badge-api">Monitoring</span></td>
+                            <td>Four Golden Signals, SLOs, tracing</td>
+                        </tr>
+                        <tr>
+                            <td><code>api-security.md</code></td>
+                            <td><span class="badge badge-security">Security</span></td>
+                            <td>BOLA, rate limiting, SSRF prevention</td>
+                        </tr>
+                        <tr>
+                            <td><code>postman-newman.md</code></td>
+                            <td><span class="badge badge-testing">Testing</span></td>
+                            <td>Collections, environments, Newman CI</td>
+                        </tr>
+
+                        <tr><td colspan="3" style="background: var(--color-primary); color: white; font-weight: bold;">Setup & Meta Documentation</td></tr>
+                        <tr>
+                            <td><code>coding/SKILLS-GUIDE.md</code></td>
+                            <td><span class="badge badge-setup">Setup</span></td>
+                            <td>Complete installation guide for all platforms</td>
+                        </tr>
+                        <tr>
+                            <td><code>coding/README.md</code></td>
+                            <td><span class="badge badge-setup">Overview</span></td>
+                            <td>AI Development Rulebook overview and usage</td>
+                        </tr>
+                        <tr>
+                            <td><code>coding/skills/CODEX-CLI-INSTRUCTIONS.md</code></td>
+                            <td><span class="badge badge-setup">Setup</span></td>
+                            <td>OpenAI Codex/ChatGPT setup instructions</td>
+                        </tr>
+                        <tr>
+                            <td><code>coding/skills/CLAUDE-CODE-INSTRUCTIONS.md</code></td>
+                            <td><span class="badge badge-setup">Setup</span></td>
+                            <td>Claude Code setup instructions</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p><strong>AI Context Library</strong> - Best practices sourced from 35+ domain experts</p>
+        <p style="margin-top: var(--spacing-sm); font-size: 0.85rem;">
+            Skills available for: Claude Code | OpenAI Codex | ChatGPT | GitHub Copilot
+        </p>
+        <p style="margin-top: var(--spacing-sm); font-size: 0.85rem; color: var(--color-secondary);">
+            Last updated: December 2024
+        </p>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Collapsible sections (if any)
+        document.querySelectorAll('.collapsible').forEach(button => {
+            button.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const content = this.nextElementSibling;
+                content.classList.toggle('show');
+            });
+        });
+    </script>
+</body>
+</html>
