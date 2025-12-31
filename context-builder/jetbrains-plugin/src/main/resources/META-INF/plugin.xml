@@ -1,0 +1,149 @@
+<!--
+=============================================================
+PLUGIN.XML - JetBrains Plugin Manifest
+=============================================================
+This is the equivalent of VS Code's package.json.
+It declares:
+- Plugin metadata (id, name, vendor)
+- IDE compatibility
+- Extensions (actions, tool windows, services)
+=============================================================
+-->
+<idea-plugin>
+    <!-- =================================================== -->
+    <!-- PLUGIN IDENTITY                                     -->
+    <!-- =================================================== -->
+    <!-- Unique identifier - use reverse domain notation -->
+    <id>com.contextbuilder.plugin</id>
+
+    <!-- Display name shown in Settings > Plugins -->
+    <name>Context Builder</name>
+
+    <!-- Vendor information -->
+    <vendor email="support@example.com" url="https://github.com/example/context-builder">
+        Context Builder
+    </vendor>
+
+    <!-- =================================================== -->
+    <!-- DESCRIPTION                                         -->
+    <!-- =================================================== -->
+    <!-- HTML description shown in plugin marketplace -->
+    <description><![CDATA[
+    <p>Generate LLM context files from your codebase.</p>
+    <ul>
+        <li>Right-click files to add to context</li>
+        <li>Add per-file descriptions</li>
+        <li>Generate gitingest-style output</li>
+        <li>Copy to clipboard or save to file</li>
+        <li>History of last 10 generations</li>
+    </ul>
+    ]]></description>
+
+    <!-- =================================================== -->
+    <!-- CHANGE NOTES                                        -->
+    <!-- =================================================== -->
+    <change-notes><![CDATA[
+    <p>Version 1.0.0:</p>
+    <ul>
+        <li>Initial release</li>
+        <li>File selection via context menu</li>
+        <li>Tool window panel</li>
+        <li>History feature</li>
+    </ul>
+    ]]></change-notes>
+
+    <!-- =================================================== -->
+    <!-- IDE COMPATIBILITY                                   -->
+    <!-- =================================================== -->
+    <!-- Depends on IntelliJ Platform (com.intellij.modules.platform) -->
+    <!-- This makes it work in all JetBrains IDEs -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <!-- =================================================== -->
+    <!-- EXTENSIONS                                          -->
+    <!-- =================================================== -->
+    <extensions defaultExtensionNs="com.intellij">
+        <!--
+        TOOL WINDOW: The panel that appears in the IDE
+        - id: Unique identifier for the tool window
+        - factoryClass: Class that creates the tool window content
+        - anchor: Where it appears (bottom, left, right)
+        - secondary: If true, appears in secondary group
+        -->
+        <toolWindow
+                id="Context Builder"
+                factoryClass="com.contextbuilder.ContextBuilderToolWindowFactory"
+                anchor="bottom"
+                icon="/icons/toolwindow.svg"
+                secondary="false"/>
+
+        <!--
+        PROJECT SERVICE: Singleton per project for state management
+        - serviceImplementation: Class that implements the service
+        -->
+        <projectService
+                serviceImplementation="com.contextbuilder.ContextBuilderService"/>
+
+        <!--
+        PERSISTENT STATE: Save state across IDE restarts
+        - Used for history storage
+        -->
+        <projectService
+                serviceImplementation="com.contextbuilder.ContextBuilderState"/>
+    </extensions>
+
+    <!-- =================================================== -->
+    <!-- ACTIONS                                             -->
+    <!-- =================================================== -->
+    <!-- Actions are commands that can be triggered from menus, toolbars, etc. -->
+    <actions>
+        <!--
+        ACTION GROUP: Container for related actions
+        - id: Unique identifier
+        - text: Display text
+        - popup: If true, shows as submenu
+        -->
+        <group id="ContextBuilder.Menu" text="Context Builder" popup="true">
+            <!--
+            ACTION: Add to Context
+            - class: The action handler class
+            - text: Display text
+            - description: Tooltip
+            -->
+            <action
+                    id="ContextBuilder.AddToContext"
+                    class="com.contextbuilder.actions.AddToContextAction"
+                    text="Add to Context"
+                    description="Add selected files to Context Builder">
+            </action>
+
+            <separator/>
+
+            <action
+                    id="ContextBuilder.ShowPanel"
+                    class="com.contextbuilder.actions.ShowPanelAction"
+                    text="Show Context Builder"
+                    description="Open Context Builder tool window">
+            </action>
+
+            <action
+                    id="ContextBuilder.ClearFiles"
+                    class="com.contextbuilder.actions.ClearFilesAction"
+                    text="Clear All Files"
+                    description="Remove all files from Context Builder">
+            </action>
+        </group>
+
+        <!--
+        ADD TO MENUS: Where the action group appears
+        - anchor: Position relative to other items
+        - relative-to-action: Reference action for positioning
+        -->
+
+        <!-- Project View (file tree) right-click menu -->
+        <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
+
+        <!-- Editor tab right-click menu -->
+        <add-to-group group-id="EditorTabPopupMenu" anchor="last"/>
+    </actions>
+</idea-plugin>

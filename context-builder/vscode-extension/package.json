@@ -1,0 +1,71 @@
+{
+  "name": "context-builder",
+  "displayName": "Context Builder",
+  "description": "Generate LLM context from selected files",
+  "version": "0.0.1",
+  "publisher": "your-publisher-name",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "contextBuilder.addToContext",
+        "title": "Add to Context"
+      },
+      {
+        "command": "contextBuilder.showFiles",
+        "title": "Context Builder: Show Selected Files"
+      },
+      {
+        "command": "contextBuilder.clear",
+        "title": "Context Builder: Clear Selection"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "contextBuilder.addToContext",
+          "group": "navigation"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "panel": [
+        {
+          "id": "contextBuilderPanel",
+          "title": "Context Builder",
+          "icon": "$(files)"
+        }
+      ]
+    },
+    "views": {
+      "contextBuilderPanel": [
+        {
+          "type": "webview",
+          "id": "contextBuilder.panelView",
+          "name": "Context Builder"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "eslint": "^8.54.0",
+    "typescript": "^5.3.0"
+  }
+}

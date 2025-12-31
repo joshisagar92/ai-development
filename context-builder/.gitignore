@@ -1,0 +1,16 @@
+# VS Code Extension
+vscode-extension/node_modules/
+vscode-extension/out/
+vscode-extension/*.vsix
+
+# JetBrains Plugin
+jetbrains-plugin/.gradle/
+jetbrains-plugin/build/
+jetbrains-plugin/bin/
+jetbrains-plugin/.idea/
+jetbrains-plugin/*.iml
+jetbrains-plugin/gradle/wrapper/gradle-wrapper.jar
+
+# OS files
+.DS_Store
+Thumbs.db
